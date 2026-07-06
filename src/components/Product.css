@@ -1,0 +1,54 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  z-index: 1;
+  /* Changed to space-between to keep text at top and button at bottom */
+  justify-content: space-between; 
+  margin: 10px;
+  padding: 20px;
+  width: 300px; 
+  height: 400px; /* Locks the exact card size */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12); 
+  transition: transform 0.2s ease-in;
+}
+
+.product:hover {
+  transform: translateY(-5px); 
+}
+
+.product__info {
+  height: 100px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* This restricts long titles to exactly 2 lines and adds "..." at the end */
+.product__info > p:first-child {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0;
+  font-weight: 500;
+}
+
+.product > img {
+  max-height: 200px;
+  width: 100%;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.product > button {
+  background: #f0c14b;
+  border: 1px solid;
+  /* margin-top: auto forces the button to stick to the bottom edge */
+  margin-top: auto; 
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+  cursor: pointer;
+  padding: 5px 15px;
+  width: 100%;
+}

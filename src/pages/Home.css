@@ -1,0 +1,56 @@
+.home {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1500px;
+  background-color: #e3e6e6;
+}
+
+.home__carousel {
+  margin-bottom: -150px; 
+  /* Added webkit prefix for wider browser support */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+.home__carousel img {
+  width: 100%;
+  max-height: 500px; /* This stops the image from taking over the screen */
+  object-fit: cover; /* This crops the image cleanly instead of squishing it */
+  object-position: top; /* Keeps the most important part of the banner visible */
+}
+
+.home__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 1;
+  position: relative; /* This is crucial for z-index to work! */
+  margin-left: 5px;
+  margin-right: 5px;
+}
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  .home__carousel img {
+    max-height: 300px; /* Shrink the banner height on smaller displays */
+  }
+
+  .home__row {
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: center; /* Center-align cards when they wrap */
+  }
+
+  .product {
+    width: 45%; /* Fits 2 product cards side-by-side on tablets */
+    min-width: 160px;
+    height: 380px;
+  }
+}
+
+@media (max-width: 520px) {
+  .product {
+    width: 100%; /* Spans full-width as a single column on mobile phones */
+    margin: 10px 0;
+  }
+}

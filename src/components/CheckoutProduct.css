@@ -1,0 +1,68 @@
+.checkoutProduct {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray; /* Adds a clean divider line */
+}
+
+.checkoutProduct__image {
+  object-fit: contain;
+  width: 180px;
+  height: 180px;
+}
+
+.checkoutProduct__info {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkoutProduct__title {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.checkoutProduct__price {
+  margin-top: 5px;
+}
+
+/* FIX: This forces the stars to sit side-by-side! */
+.checkoutProduct__rating {
+  display: flex;
+  margin-top: 5px;
+}
+
+.checkoutProduct__info > button {
+  background: #f0c14b;
+  border: 1px solid;
+  margin-top: 15px;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+  cursor: pointer;
+  padding: 6px 15px;
+  width: max-content; /* Keeps button wrapping tight to the text */
+  border-radius: 4px; /* Softens the button edges */
+  transition: all 0.2s;
+}
+
+.checkoutProduct__info > button:hover {
+  background: #f4d078;
+}
+@media (max-width: 550px) {
+  .checkoutProduct {
+    flex-direction: column; /* Stacks product image above product details */
+    align-items: center;
+    text-align: center;
+  }
+
+  .checkoutProduct__info {
+    padding-left: 0;
+    margin-top: 15px;
+    align-items: center;
+  }
+
+  .checkoutProduct__rating {
+    justify-content: center;
+  }
+}

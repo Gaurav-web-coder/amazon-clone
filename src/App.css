@@ -1,0 +1,41 @@
+/* --- GLOBAL STYLES --- */
+* {
+    box-sizing: border-box;
+  }
+  
+  /* --- DARK MODE OVERRIDES --- */
+  .dark-mode {
+    color: white !important;
+  }
+  
+  /* Make all the white cards dark gray */
+  .dark-mode .product, 
+  .dark-mode .order, 
+  .dark-mode .checkout,
+  .dark-mode .subtotal,
+  .dark-mode .payment__section, 
+  .dark-mode .login__container {
+    background-color: #1e1e1e !important;
+    border-color: #333 !important;
+    color: #f1f1f1 !important;
+  }
+  
+  /* Fix text colors inside the cards */
+  .dark-mode h1, 
+  .dark-mode h2, 
+  .dark-mode h3, 
+  .dark-mode p {
+    color: #f1f1f1 !important;
+  }
+  
+  /* Darken the input boxes (Search bar & Login) */
+  .dark-mode input {
+    background-color: #333 !important;
+    color: white !important;
+    border: 1px solid #555 !important;
+  }
+  
+  /* Dim the carousel background so it blends seamlessly */
+  .dark-mode .home {
+    background-color: #121212 !important;
+  }

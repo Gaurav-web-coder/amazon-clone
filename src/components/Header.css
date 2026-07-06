@@ -1,0 +1,111 @@
+.header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #131921;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .header__logo {
+    margin: 0 20px;
+    cursor: pointer;
+  }
+  
+  .header__search {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    border-radius: 4px; /* Amazon's soft corners */
+    overflow: hidden;
+    height: 40px; /* Force standard height */
+    margin: 0 20px; /* Space it out from the logo and nav */
+  }
+  
+  .header__searchInput {
+    height: 100%;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  .header__searchIcon {
+    padding: 10px;
+    height: 100%;
+    background-color: #febd69; /* Amazon Yellow */
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .header__searchIcon:hover {
+    background-color: #f3a847;
+  }
+  
+  .header__nav {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .header__option {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 15px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .header__optionLineOne {
+    font-size: 11px;
+  }
+  
+  .header__optionLineTwo {
+    font-size: 13px;
+    font-weight: 800;
+  }
+  
+  .header__optionBasket {
+    display: flex;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    margin: 0 20px;
+  }
+  
+  .header__basketCount {
+    margin-left: 5px;
+  }
+  /* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px;
+  }
+
+  /* Hide the "Returns & Orders" link on mobile to save horizontal space */
+  .header > .header__nav > link:nth-child(2),
+  .header__option:nth-of-type(2) {
+    display: none !important;
+  }
+
+  .header__logo h2 {
+    font-size: 18px;
+  }
+
+  .header__searchInput {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* On ultra-small phones, hide the email greeting to keep the UI clean */
+  .header__optionLineOne {
+    display: none;
+  }
+}
