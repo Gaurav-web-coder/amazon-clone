@@ -1,37 +1,38 @@
-const functions = require('firebase-functions');
-const express = require('express');
-const cors = require('cors');
-
-// 1. Initialize Stripe with your SECRET KEY
-// Old way: require("stripe")("sk_test_...");
-// NEW WAY:
+const express = require("express");
+const cors = require("cors");
+// Render will inject your environment variables automatically!
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
-// 2. Set up the Express App
 const app = express();
 
-// 3. Middlewares (Security & JSON formatting)
+// Middlewares
 app.use(cors({ origin: true }));
 app.use(express.json());
 
-// 4. API Routes
-app.get('/', (request, response) => response.status(200).send('Backend is running!'));
+// API routes
+app.get("/", (request, response) => response.status(200).send("Backend is live!"));
 
-app.post('/payments/create', async (request, response) => {
+app.post("/payments/create", async (request, response) => {
   const total = request.query.total;
-  console.log('Payment Request Received! Amount >>> ', total);
+  console.log("Payment Request Received for this amount >>> ", total);
 
-  // Tell Stripe to create a payment session for this amount
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: total, 
-    currency: 'inr',
-  });
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: total, 
+      currency: "inr", 
+    });
 
-  // Send the secret confirmation code back to the React frontend
-  response.status(201).send({
-    clientSecret: paymentIntent.client_secret,
-  });
+    response.status(201).send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  } catch (error) {
+    console.error("Stripe Error:", error.message);
+    response.status(500).send({ error: error.message });
+  }
 });
 
-// 5. Turn the Express app into a Firebase Cloud Function
-exports.api = functions.https.onRequest(app);
+// Start the independent server
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
