@@ -7,7 +7,7 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { getBasketTotal } from '../context/reducer';
 import axios from '../axios';
 import { db } from '../firebase'; // Make sure your firebase.js exports db!
-
+import { doc, setDoc } from "firebase/firestore";
 export default function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
   const navigate = useNavigate();
@@ -74,15 +74,14 @@ export default function Payment() {
 
       // Save the order to our Firebase Database
       if (user) {
-        db.collection('users')
-          .doc(user?.uid)
-          .collection('orders')
-          .doc(paymentIntent.id)
-          .set({
-            basket: basket,
-            amount: paymentIntent.amount,
-            created: paymentIntent.created
-          });
+        // THIS IS THE NEW CODE:
+        const orderRef = doc(db, 'users', user?.uid, 'orders', paymentIntent.id);
+
+     await setDoc(orderRef, {
+      basket: basket,
+      amount: paymentIntent.amount,
+      created: paymentIntent.created
+});
       }
 
       setSucceeded(true);
