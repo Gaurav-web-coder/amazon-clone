@@ -15,7 +15,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import ProductDetail from './pages/ProductDetail';
 
 // Replace with your real Stripe Publishable Key
-const promise = loadStripe('pk_test_51YOUR_KEY_HERE...');
+const promise = loadStripe('pk_test_51TppFBHZlux4xlhm3mvzihQPxYkPm2twJGeAaSSDWIHTHyqAhdK6TN7SGVgjJ83QiN5F9FXHrebrTFPPIxpSi7Dx00zWEHZHbb');
 
 function App() {
   // 1. Pulling darkMode out of the global state here
